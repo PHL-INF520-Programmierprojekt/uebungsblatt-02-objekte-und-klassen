@@ -1,2 +1,2 @@
 # Übungsblatt
-[Link zu English version](./README_en.md)
+[Link to English version](./README_en.md)
