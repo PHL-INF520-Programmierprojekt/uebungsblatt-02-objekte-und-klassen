@@ -9,15 +9,20 @@ import java.nio.file.Paths;
  * Utility class for tests.
  */
 public class TestUtils {
+
+    /**
+     * The user's working directory.
+     */
+    public static final String WORKING_DIRECTORY = System.getProperty("user.dir");
+
     /**
      * Returns true if the given file exists in the root directory or in the src directory.
      * @param fileName
      * @return true if the given file exists in the root directory or in the src directory.
      */
     public static boolean fileExistsInRootOrSrcDirectory(String fileName) {
-        String workingDir = System.getProperty("user.dir");
-        return Files.exists(Paths.get(workingDir, fileName)) ||
-                Files.exists(Paths.get(workingDir, "./src/"+fileName));
+        return Files.exists(Paths.get(WORKING_DIRECTORY, fileName)) ||
+                Files.exists(Paths.get(WORKING_DIRECTORY, "./src/"+fileName));
     }
     
     /**
