@@ -1,9 +1,14 @@
 package de.phl.programmingproject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Utility class for tests.
@@ -50,6 +55,28 @@ public class TestUtils {
 
         String output = baos.toString();
         return output;
+    }
+
+    /**
+     * Gets the content of the given file from the root or src directory.
+     * @param fileName
+     * @return
+     */
+    public static String getFileContentForFileInRootOrSrcDirectory(String fileName){
+        if(!fileExistsInRootOrSrcDirectory(fileName)){
+            fail(String.format("The file '%s' does not exist in the root (or './src') directory of the project.", fileName));
+        }
+        Path p1 = Paths.get(TestUtils.WORKING_DIRECTORY, fileName);
+        Path p2 = Paths.get(TestUtils.WORKING_DIRECTORY, "./src/"+fileName);
+        Path path = Files.exists(p1) ? p1 : p2;
+        // load content of the file
+        String txt;
+        try {
+            txt = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return txt;
     }
 
 }
