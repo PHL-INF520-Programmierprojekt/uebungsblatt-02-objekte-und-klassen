@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -341,5 +342,27 @@ public class TestUtils {
             return boolean.class;
         }
         return clazz;
+    }
+
+    /**
+     * Asserts that the system output after running the action matches the given regular expression.
+     * @param action
+     * @param regex
+     * @param failMessage
+     */
+    public static void assertSystemOutMatchesRegex(Runnable action, String regex, String failMessage) {
+        String output = runActionAndGetSystemOut(action);
+        assertTrue(Pattern.compile(regex).matcher(output).find(), String.format("%s\n%s\n%s", failMessage,"The output was:", output));
+    }
+
+    /**
+     * Asserts that the content of the file with the given name in the root or src directory matches the given regular expression.
+     * @param fileName
+     * @param regex
+     * @param failMessage
+     */
+    public static void assertFileContentMatchesRegex(String fileName, String regex, String failMessage) {
+        String fileContent = getFileContentForFileInRootOrSrcDirectory(fileName);
+        assertTrue(Pattern.compile(regex).matcher(fileContent).find(), String.format("%s\n%s\n%s", failMessage, "The content of the file was:", fileContent));
     }
 }
