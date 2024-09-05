@@ -6,8 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.regex.Pattern;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -27,9 +25,9 @@ public class PetAdoptionCenterTest extends TestBase {
 
     @Test
     void task_3_correct_information_for_pet_buddy_printed() {
-        String output = TestUtils.runActionAndGetSystemOut(() -> Main.main(null));
-        assertTrue(output.contains(String.format("Name: %s, Age: %d, Breed: %s", "Buddy", 3, "Labrador Retriever")),
-                "The information for pet 'Buddy' is missing or not printed correctly. The output was:\n" + output);
+        TestUtils.assertSystemOutMatchesRegex(() -> Main.main(null),
+                String.format("Name: %s, Age: %d, Breed: %s", "Buddy", 3, "Labrador Retriever"),
+                "The information for pet 'Buddy' is missing or not printed correctly.");
     }
 
     @Test
