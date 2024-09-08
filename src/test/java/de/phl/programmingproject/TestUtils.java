@@ -346,26 +346,51 @@ public class TestUtils {
 
     /**
      * Asserts that the system output after running the action matches the given regular expression.
+     * This method invokes {@link #assertSystemOutMatchesRegex(Runnable, String, String, boolean)} with <code>printOutput = true</code>.
      * @param action
      * @param regex
      * @param failMessage
      */
     public static void assertSystemOutMatchesRegex(Runnable action, String regex, String failMessage) {
+        assertSystemOutMatchesRegex(action, regex, failMessage, true);
+    }
+
+    /**
+     * Asserts that the system output after running the action matches the given regular expression.
+     * @param action The action to run that prints to the system out.
+     * @param regex The regular expression that the output should match.
+     * @param failMessage The message that is printed if the assertion fails.
+     * @param printOutput Whether the output should be printed in the console if the assertion fails.
+     */
+    public static void assertSystemOutMatchesRegex(Runnable action, String regex, String failMessage, boolean printOutput) {
         String output = runActionAndGetSystemOut(action);
-        assertTrue(Pattern.compile(regex).matcher(output).find(), String.format("%s\n%s\n%s", failMessage,"The output was:", output));
+        assertTrue(Pattern.compile(regex).matcher(output).find(),
+                printOutput? String.format("%s\n%s\n%s", failMessage,"The output was:", output) : failMessage);
     }
 
     /**
      * Asserts that the content of the file with the given name in the root or src directory matches the given regular expression.
+     * This method invokes {@link #assertFileContentMatchesRegex(String, String, String, boolean)} with <code>printContent = true</code>.
      * @param fileName
      * @param regex
      * @param failMessage
      */
     public static void assertFileContentMatchesRegex(String fileName, String regex, String failMessage) {
-        String fileContent = getFileContentForFileInRootOrSrcDirectory(fileName);
-        assertTrue(Pattern.compile(regex).matcher(fileContent).find(), String.format("%s\n%s\n%s", failMessage, "The content of the file was:", fileContent));
+      assertFileContentMatchesRegex(fileName, regex, failMessage, true);
     }
 
+    /**
+     * Asserts that the content of the file with the given name in the root or src directory matches the given regular expression.
+     * @param fileName The name of the file.
+     * @param regex The regular expression that the content of the file should match.
+     * @param failMessage The message that is printed if the assertion fails.
+     * @param printContent Whether the content of the file should be printed in the console if the assertion fails.
+     */
+    public static void assertFileContentMatchesRegex(String fileName, String regex, String failMessage, boolean printContent) {
+        String fileContent = getFileContentForFileInRootOrSrcDirectory(fileName);
+        assertTrue(Pattern.compile(regex).matcher(fileContent).find(),
+                printContent? String.format("%s\n%s\n%s", failMessage, "The content of the file was:", fileContent) : failMessage);
+    }
     /**
      * Asserts that the file with the given name exists in the root or src directory.
      * @param fileName
