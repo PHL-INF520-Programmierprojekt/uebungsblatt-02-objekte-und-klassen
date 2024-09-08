@@ -222,8 +222,9 @@ public class TestUtils {
                 method = clazz.getDeclaredMethod(methodName, parameterTypes);
             }
         } catch (NoSuchMethodException e) {
-            fail(String.format("The class '%s' does not contain a method '%s' with parameters of type '%s'", clazz.getSimpleName(), methodName,
-                    Arrays.toString(parameterTypes)));
+            fail(String.format("The class '%s' does not contain a method '%s' with parameters of type '%s' (i.e., %s)", clazz.getSimpleName(), methodName,
+                    Arrays.toString(parameterTypes),
+                    String.format("'%s(%s)'", methodName, Arrays.toString(parameterTypes)).replace("[", "").replace("]", "")));
         }
         // make the method accessible (e.g., when it is private or protected)
         if(null != method){
