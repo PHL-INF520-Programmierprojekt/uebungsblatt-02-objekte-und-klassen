@@ -12,6 +12,8 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.beanshell:bsh-core:2.0b4")
+    testImplementation("org.mockito:mockito-inline:3.12.1")
 }
 
 tasks.test {
