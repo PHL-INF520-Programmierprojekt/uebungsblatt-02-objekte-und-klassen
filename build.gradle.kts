@@ -12,6 +12,7 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.11.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.beanshell:bsh-core:2.0b4")
     testImplementation("org.mockito:mockito-inline:3.12.1")
 }
