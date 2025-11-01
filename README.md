@@ -9,12 +9,12 @@ In dieser Übung verwenden wir die Pet Adoption Center API, um verschiedene Haus
 
 ### API Beschreibung
 
-Die Pet Adoption Center API bietet drei Klassen zur Verwaltung von Haustieren (`Pet`), Adoptierenden  (`Adopter`) und Adoptionen (`Adoption`).
-Der Quellcode befindet sich im Paket `de.phl.programmingproject.petadoption`.
+Die Pet Adoption Center API bietet drei Klassen zur Verwaltung von Haustieren [`Pet`](src/main/java/de/phl/programmingproject/petadoption/Pet.java), Adoptierenden  ([`Adopter`](src/main/java/de/phl/programmingproject/petadoption/Adopter.java)) und Adoptionen ([`Adoption`](src/main/java/de/phl/programmingproject/petadoption/Adoption.java)).
+Der Quellcode befindet sich im Paket [`de.phl.programmingproject.petadoption`](src/main/java/de/phl/programmingproject/petadoption/).
 
 #### Pet Klasse
 
-Die `Pet` Klasse repräsentiert ein Haustier im Adoption Center. Sie hat folgende Methoden:
+Die [`Pet`](src/main/java/de/phl/programmingproject/petadoption/Pet.java)  Klasse repräsentiert ein Haustier im Adoption Center. Sie hat folgende Methoden:
 
 - `Pet(final String name, final int age, final String breed)`: Ein Konstruktor, um ein neues Pet-Objekt mit dem gegebenen Namen, Alter und Rasse zu erstellen.
 - `String getInfo()`: Gibt einen String mit dem Namen, Alter und der Rasse des Haustiers zurück.
@@ -23,21 +23,21 @@ Die `Pet` Klasse repräsentiert ein Haustier im Adoption Center. Sie hat folgend
 
 #### Adopter Klasse
 
-Die `Adopter` Klasse repräsentiert eine Person, die ein Haustier adoptiert. Sie hat folgende Methoden:
+Die [`Adopter`](src/main/java/de/phl/programmingproject/petadoption/Adopter.java)  Klasse repräsentiert eine Person, die ein Haustier adoptiert. Sie hat folgende Methoden:
 
 - `Adopter(final String name, final String phone, final String email)`: Ein Konstruktor, um ein neues Adopter-Objekt mit dem gegebenen Namen, Telefon und E-Mail zu erstellen.
 - `String getInfo()`: Gibt einen String mit dem Namen, Telefon und E-Mail des Adoptierenden zurück.
 
 #### Adoption Klasse
 
-Die `Adoption` Klasse repräsentiert eine Haustieradoption. Sie hat folgende Methoden:
+Die [`Adoption`](src/main/java/de/phl/programmingproject/petadoption/Adoption.java)  Klasse repräsentiert eine Haustieradoption. Sie hat folgende Methoden:
 
 - `Adoption(final Pet pet, final Adopter adopter, final Date date)`: Ein Konstruktor, um ein neues `Adoption` Objekt mit dem gegebenen `Pet`, `Adopter` und Adoptionsdatum zu erstellen.
 - `String getInfo()`: Gibt einen String mit dem Namen des Haustiers, dem Namen des Adoptierenden und dem Adoptionsdatum zurück.
 
 ### Aufgaben
 
-Implementieren Sie die folgenden Aufgaben in der `main` Methode, die sich in der `Main` Klasse im Paket `de.phl.programmingproject.petadoption` befindet.
+Implementieren Sie die folgenden Aufgaben in der `main` Methode, die sich in der [`Main`](src/main/java/de/phl/programmingproject/petadoption/Main.java) Klasse im Paket `de.phl.programmingproject.petadoption` befindet.
 
 1. Erstellen Sie ein neues `Pet` Objekt mit dem Namen "Buddy", Alter 3 und Rasse "Labrador Retriever".
 2. Erstellen Sie ein neues `Adopter` Objekt mit dem Namen "Jane Smith", Telefon "555-555-5555" und E-Mail "janesmith@email.com".
@@ -53,11 +53,11 @@ Implementieren Sie die folgenden Aufgaben in der `main` Methode, die sich in der
 ## Übung: Studenten-Enrollment-System
 
 In dieser Übung erstellen wir eine API für ein Student Enrollment System, das uns die Verwaltung der Einschreibung von Studierenden in verschiedene Kurse ermöglicht.
-Die Quellen finden Sie im Paket `de.phl.programmingproject.enrollmentsystem`.
+Die Quellen finden Sie im Paket [`de.phl.programmingproject.enrollmentsystem`](src/main/java/de/phl/programmingproject/enrollmentsystem/).
 
 ### Klassen
 
-1. `Student`: Diese Klasse hat die folgenden Attribute: Name (`String`), ID (`String`) und eine Menge (Set) von eingeschriebenen Einschreibungen (`Set<Enrollment>`). Sie besitzt auch die folgenden Methoden:
+1. [`Student`](src/main/java/de/phl/programmingproject/enrollmentsystem/Student.java): Diese Klasse hat die folgenden Attribute: Name (`String`), ID (`String`) und eine Menge (Set) von eingeschriebenen Einschreibungen (`Set<Enrollment>`). Sie besitzt auch die folgenden Methoden:
 
    - `getInfo()`: Gibt einen String mit dem Namen und der ID der Studierenden zurück.
    - `enroll(final Course course)`: Fügt einen Kurs zur Liste der eingeschriebenen Kurse hinzu.
@@ -65,7 +65,7 @@ Die Quellen finden Sie im Paket `de.phl.programmingproject.enrollmentsystem`.
    - `isEnrolledIn()`: Überprüft, ob der Student in einem bestimmten Kurs eingeschrieben ist.
    - `getCourses()`: Gibt eine Liste der eingeschriebenen Kurse des Studenten zurück.
 
-2. `Course`: Diese Klasse sollte die folgenden Attribute haben: Name (`String`) und eine Liste von eingeschriebenen Studenten (`List<Student>`). Sie sollte auch die folgenden Methoden haben:
+2. [`Course`](src/main/java/de/phl/programmingproject/enrollmentsystem/Course.java): Diese Klasse sollte die folgenden Attribute haben: Name (`String`) und eine Liste von eingeschriebenen Studenten (`List<Student>`). Sie sollte auch die folgenden Methoden haben:
 
    - `getInfo()`: Gibt einen String mit dem Namen des Kurses zurück.
    - `enroll(final Student student)`: Fügt eine\*n Student\*in zur Liste der eingeschriebenen Studierenden hinzu.
@@ -73,7 +73,7 @@ Die Quellen finden Sie im Paket `de.phl.programmingproject.enrollmentsystem`.
    - `isStudentEnrolled(final Student student)`: Überprüft, ob der/die Student*in in diesem Kurs eingeschrieben ist.
    - `getStudents()`: Gibt eine Liste der in den Kurs eingeschriebenen Studierenden zurück.
 
-3. `Enrollment`: Diese Klasse hat die folgenden Attribute: Student\*in (`Student`), Kurs (`Course`) und Note (`double`). Sie besitzt auch die folgenden Methoden:
+3. [`Enrollment`](src/main/java/de/phl/programmingproject/enrollmentsystem/Enrollment.java): Diese Klasse hat die folgenden Attribute: Student\*in (`Student`), Kurs (`Course`) und Note (`double`). Sie besitzt auch die folgenden Methoden:
 
    - `getInfo()`: Gibt einen String mit dem Namen des/der Student\*in, dem Namen des Kurses und der Note zurück.
    - `setGrade(final double grade)`: Legt die Note für die Einschreibung fest.
